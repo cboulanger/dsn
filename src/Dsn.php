@@ -66,14 +66,14 @@ class Dsn extends Object {
             }
             $this->parseDsn = [
                 'host' => $parseArray[$this->defaultHostKey],
-                'port' => $parseArray['port'] ? $parseArray['port'] : $this->defaultPort,
+                'port' => isset($parseArray['port']) ? $parseArray['port'] : $this->defaultPort,
                 'database' => $parseArray[$this->defaultDatabaseKey]
             ];
             return true;
         }
         $this->parseDsn = [
             'host' => $this->parse_url[$this->defaultHostKey],
-            'port' => $this->parse_url['port'] ? $this->parse_url['port'] : $this->defaultPort,
+            'port' => isset($this->parse_url['port']) ? $this->parse_url['port'] : $this->defaultPort,
             'database' => basename($this->dsn)
         ];
         return true;
